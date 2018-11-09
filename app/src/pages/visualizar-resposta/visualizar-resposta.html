@@ -17,12 +17,22 @@
         USUÁRIO: 
       </ion-item-divider>
 
-      <ion-item>{{ perguntas.pergunta }}</ion-item>
+      <ion-item>
+        <p>Perguntas</p><br/>
 
-      <ion-item >{{ perguntas.respostas }}
+        {{ perguntas.pergunta }}
       
       </ion-item>
-      <ion-item>{{ perguntas.categoria }}</ion-item>
+
+      <ion-item *ngFor="let resposta of perguntas.respostas">
+        <p>Resposta</p><br/>
+       Lestras: {{ resposta.label }}<br/>
+      Descricao: {{resposta.descricao}}<br/>
+      Condicao: {{resposta.condicao}}
+      </ion-item>
+      <ion-item>
+        <p>Categoria</p>
+        {{ perguntas.categoria }}</ion-item>
 
     </ion-item-group>
   

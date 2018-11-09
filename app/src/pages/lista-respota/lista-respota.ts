@@ -21,7 +21,7 @@ export class ListaRespotaPage {
   http : HttpClient;
   load;
   alert;
-
+  
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -67,9 +67,7 @@ export class ListaRespotaPage {
     this.navCtrl.push(VisualizarRespostaPage.name,{perguntaSelecionada: user});
    
   }
-  
-
-
+ 
 
 }
 
