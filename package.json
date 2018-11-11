@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ionic-native/autostart": "^4.17.0",
+    "@ionic-native/core": "^4.17.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "consign": "^0.1.6",

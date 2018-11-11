@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Pergunta } from '../../modules/pergunta';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { VisualizarRespostaPage } from '../visualizar-resposta/visualizar-resposta';
+import { CadastroPerguntaPage } from '../cadastro-pergunta/cadastro-pergunta';
 
 /**
  * Generated class for the ListaRespotaPage page.
@@ -67,6 +68,7 @@ export class ListaRespotaPage {
     this.navCtrl.push(VisualizarRespostaPage.name,{perguntaSelecionada: user});
    
   }
+ 
  
 
 }

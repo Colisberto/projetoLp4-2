@@ -65,9 +65,7 @@ export class ListaUsuarioPage {
     console.log('ionViewDidLoad ListaUsuarioPage');
   }
 
-  avancarCadastroUsuario(){
-    this.navCtrl.push(CadastroUsuarioPage.name)
-  }
+ 
   seleciona(user:Usuario){
     this.navCtrl.push(VisualizarUsuarioPage.name,{usuarioSelecionado:user});
   }
