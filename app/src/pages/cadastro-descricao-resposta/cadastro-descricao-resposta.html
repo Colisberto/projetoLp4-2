@@ -8,11 +8,11 @@
               <ion-list>  
               <ion-item>
                     <ion-label stacked>Descriçao Resposta: </ion-label>
-                    <ion-input placeholder="Digite a Descriçao"></ion-input>
+                    <ion-input [(ngModel)]= "respostas.descricao" name="descricao"  placeholder="Digite a Descriçao" ></ion-input>
                   </ion-item>
                   <ion-item>
                           <ion-label stacked>Condiçao </ion-label>
-                          <ion-select placeholder="Selecione"> 
+                          <ion-select [(ngModel)]= "respostas.condicao" name="condicao" placeholder="Selecione" > 
                               <ion-option>True</ion-option>
                               <ion-option selected >False</ion-option>
                           </ion-select>
@@ -21,7 +21,7 @@
                       </ion-list>
 
                       <div text-center margin-top>
-                        <button ion-button color="secondary">Salvar</button>
+                        <button ion-button color="secondary" (click) = "salvar()" >Salvar</button>
                       </div>
                          </form>
       </ion-content>

@@ -11,7 +11,8 @@ import { CadastroUsuarioPage } from '../cadastro-usuario/cadastro-usuario';
 })
 export class HomePage {
 
-  
+  listUsuario:boolean = false;
+  listPergunta:boolean = false;
   /** Acrescentado para ser usado na chamada da tela */
   
   constructor(public navCtrl: NavController) {
@@ -33,5 +34,16 @@ export class HomePage {
  cadastrarUsuario(){
     this.navCtrl.push(CadastroUsuarioPage.name)
   }
+
+  
+
+
+mostrarListaUsuario(){
+  this.listUsuario=!this.listUsuario;
+};
+
+mostrarListaPergunta(){
+  this.listPergunta=!this.listPergunta;
+};
 
 }

@@ -65,6 +65,7 @@ export class ListaUsuarioPage {
     console.log('ionViewDidLoad ListaUsuarioPage');
   }
 
+  
  
   seleciona(user:Usuario){
     this.navCtrl.push(VisualizarUsuarioPage.name,{usuarioSelecionado:user});

@@ -4,9 +4,10 @@ import { Resposta } from "./resposta";
  *  Para ser usado para criação do objeto pergunta e seus atributos */
 
 export class Pergunta {
+  
     id: number;
     pergunta: string;
-    respostas: Resposta[];
+    respostas[letra:String,descricao:string];
     categoria : number;
    
 }

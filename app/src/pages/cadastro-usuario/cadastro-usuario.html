@@ -17,12 +17,12 @@
     <form (ngSubmit)="salvar()">
       <ion-item>
         <ion-label stacked>Nome: </ion-label>
-        <ion-input [(ngModel)]="usuario.nome" name="nome"></ion-input>
+        <ion-input [(ngModel)]="usuario.nome" name="nome" ></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label stacked>Email: </ion-label>
-        <ion-input [(ngModel)]="usuario.email" name="email"></ion-input>
+        <ion-input [(ngModel)]="usuario.email" name="email" ></ion-input>
       </ion-item>
   
       <ion-item>
@@ -48,8 +48,12 @@
           <p ion-text color="primary">{{success.message}}</p>
       </div>
       
-      <div text-center margin-top>
+      <div text-center margin-top *ngIf="botaoSalvar">
         <button ion-button color="secondary">Salvar</button>
+      </div>
+       
+      <div text-center margin-top *ngIf="botaoEditar">
+        <button ion-button color="secondary" (click)="editar()">Editar</button>
       </div>
     </form>
   </ion-content>

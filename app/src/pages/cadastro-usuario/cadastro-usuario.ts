@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Usuario } from '../../modules/usuario';
 import { HttpClient } from '@angular/common/http';
+
 
 @IonicPage()
 @Component({
@@ -9,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'cadastro-usuario.html',
 })
 export class CadastroUsuarioPage {
+ 
 
   private orderForm;
   public usuario: Usuario;
@@ -16,33 +18,51 @@ export class CadastroUsuarioPage {
   private senha_confirma:string;
   private error = { condicao: false, message:''};
   private success = { condicao: false, message: ''};
-
+  load;
+  botaoEditar:boolean;
+  botaoSalvar:boolean;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public http: HttpClient,
-  ) {
-    this.usuario = new Usuario();
-  }
+    private _http: HttpClient,
+    private _alertCtrl: AlertController,
+    private _loadCtr: LoadingController,
 
-  salvar(){
+  ) {
+    this.usuario = this.navParams.get('usuarioSelecionado');
+    if(this.usuario){
+      this.load = _loadCtr.create(
+        {content: "Carregando..."}
+      );
+      this.botaoEditar = true;
+  }else{
+    this.botaoSalvar = true;
+    this.usuario = new Usuario;
+    
+
+  }
+  }
+ 
+ 
+
+  editar(){
     this.error.condicao = false;
     this.validarDados();
-    console.log(this.error.condicao);
+    console.log(this.error.condicao,this.usuario);
     
     if(!this.error.condicao){
       this.usuario.senha = this.senha;
 
-      this.http.post("http://localhost:3000/usuario", 
-      this.usuario
-        ).subscribe(res => {
+      this._http.put("http://localhost:3000/usuario/"+this.usuario.id,this.usuario)
+     
+        .subscribe(res => {
           console.log(res);
           this.error.condicao = false;
           this.error.message = '';
           this.success.condicao = true;
           this.success.message = "Criado com sucesso"
 
-          this.navCtrl.push(CadastroUsuarioPage.name)
+         
           
         }, (err) => {
           console.log(err);
@@ -50,7 +70,35 @@ export class CadastroUsuarioPage {
 
     }
   }
+  
+  
+    salvar(){
+      this.error.condicao = false;
+      this.validarDados();
+      console.log(this.error.condicao);
+      
+      if(!this.error.condicao){
+        this.usuario.senha = this.senha;
+  
+        this._http.post("http://localhost:3000/usuario/", 
+        this.usuario
+          ).subscribe(res => {
+            console.log(res);
+            this.error.condicao = false;
+            this.error.message = '';
+            this.success.condicao = true;
+            this.success.message = "Criado com sucesso"
+  
+            this.navCtrl.push(CadastroUsuarioPage.name)
+            
+          }, (err) => {
+            console.log(err);
+          });
+  
+      }
+    }
 
+  
   validarDados(){
     if(!this.usuario.nome){
       this.error.condicao = true;
@@ -81,5 +129,6 @@ export class CadastroUsuarioPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroUsuarioPage');
   }
-
+ 
+ 
 }

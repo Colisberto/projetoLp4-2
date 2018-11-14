@@ -1,5 +1,5 @@
 export class Resposta{
-    label:string;
+    letra:string;
     descricao:string;
     condicao:string;
 

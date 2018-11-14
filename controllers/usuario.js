@@ -143,7 +143,7 @@ module.exports = function(app){
      *  rota que permite alterar um usuário pelo id
     */
     app.put('/usuario/:id', function(req, resp){
-
+        console.log(req);
         /**
          * o put temos tanto o parâmetro que é o id do usuário, quanto elementos no corpo da requisição com os dados novos
          */

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { Pergunta } from '../../modules/pergunta';
 import { HttpClient } from '@angular/common/http';
 import { Resposta } from '../../modules/resposta';
+import { CadastroPerguntaPage } from '../cadastro-pergunta/cadastro-pergunta';
 /**
  * Generated class for the VisualizarRespostaPage page.
  *
@@ -29,6 +30,7 @@ export class VisualizarRespostaPage {
 
      
      )
+     
      {
     
       this.perguntas = this.navParams.get('perguntaSelecionada');
@@ -70,7 +72,7 @@ export class VisualizarRespostaPage {
   excluir(){
     this.load.present();
     console.log("http://localhost:3000//" + this.perguntas.id);
-    this._http.delete("http://localhost:3000/usuario/" + this.perguntas.id)
+    this._http.delete("http://localhost:3000/pergunta_resposta/" + this.perguntas.id)
     .subscribe(
       (message) => {
         console.log(message);
@@ -100,12 +102,12 @@ export class VisualizarRespostaPage {
     });
     alert.present();
   }
-/*
+
   editar(){
-    this.navCtrl.push(CadastroPage.name, {
-      usuarioSelecionado: this.usuario
+    this.navCtrl.push(CadastroPerguntaPage.name, {
+      perguntaSelecionada: this.perguntas
     });
   }
-*/
+
 }
 

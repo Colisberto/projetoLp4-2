@@ -4,25 +4,48 @@
     <ion-header>
        
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+        <ion-title menuClose>Menu</ion-title>
       </ion-toolbar>
      
     </ion-header>
     <ion-content>
-      <ion-list>
-        <button ion-item menuclose (click)="cadastrarUsuario(homePage)">
-         Cadastro Usuario
-        </button>
-        <button ion-item (click)="cadastrarPergunta(friendsPage)">
-         Cadastro Pergunta
-        </button>
-        <button ion-item (click)="listarUsuario(eventsPage)">
-          Listar Usuario
-        </button>
-        <button ion-item (click)="listarPerguntas()">
-          Listar Pergunta
-        </button>
+
+      <ion-list >
+
+
+        <ion-item (click)="mostrarListaUsuario()" >
+        Usuario 
+        </ion-item>
+        <div *ngIf="listUsuario">
+          <ion-list>
+              <ion-item (click)="cadastrarUsuario(homePage)">
+                  Cadastrar
+              </ion-item>
+                <ion-item (click)="listarUsuario(eventsPage)">
+                 Listar
+                </ion-item>
+                
+          </ion-list>
+        </div>
+        <ion-item (click)="mostrarListaPergunta()">
+         Pergunta
+        </ion-item>
+        <div *ngIf="listPergunta">
+            <ion-list>
+                <ion-item (click)="cadastrarPergunta()">
+                    Cadastrar
+                </ion-item>
+                  <ion-item (click)="listarPerguntas()">
+                   Listar
+                  </ion-item>
+            </ion-list>
+          </div>
+      
+        
+      
+
       </ion-list>
+      
     </ion-content>
   </ion-menu>
   
@@ -30,16 +53,18 @@
 
 <ion-header>
 <ion-navbar>
+ 
   <ion-title>
-    Menu 
+    Menu
   </ion-title>
-  <button ion-button menuToggle>
-    <ion-icon name="menu">
+
+
+  <button ion-button menuClose menuToggle  >
+    <ion-icon name="menu"  >
 
     </ion-icon>
 
 
   </button>
 </ion-navbar>
-
 </ion-header>
